@@ -26,13 +26,16 @@ class CustomDrawer extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column( children: [
-                    Lottie.asset('image/pokemonAnimation.json',
-                    height: 100,
-                    width: 100,)
-                  ],
-                   
-                  )],
+                  Column(
+                    children: [
+                      Lottie.asset(
+                        'image/pokemonAnimation.json',
+                        height: 150,
+                        width: 150,
+                      ),
+                    ],
+                  )
+                ],
               ),
             ),
           ),
