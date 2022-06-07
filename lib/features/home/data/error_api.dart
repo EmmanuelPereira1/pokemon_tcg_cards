@@ -1,0 +1,3 @@
+enum ErrorApi {
+  apiError, unknown
+}
