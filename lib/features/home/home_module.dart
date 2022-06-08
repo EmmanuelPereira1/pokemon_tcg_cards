@@ -1,4 +1,3 @@
-import 'dart:html';
 
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pokemon_tcg_cards/features/home/data/data_sources/home_data_source.dart';
@@ -12,8 +11,8 @@ class HomeModule extends Module {
 List<Bind> get binds => [
     Bind<AbstractHomeDataSource>((i) => HomeDataSource()),
     Bind<AbstractRepositoryApi>((i) => RepositoryApi()),
-    Bind<ControllerHomePage>((i) => ControllerHomePage()),
     Bind<AbstractUserCaseHome>((i) => UserCaseHome()),
+    Bind<ControllerHomePage>((i) => ControllerHomePage()),
 
 ];
 
