@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_tcg_cards/core/resources/ColorsApp.dart';
-import 'package:pokemon_tcg_cards/core/widgets/custom_drawer.dart';
 
 class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   const CustomAppBar({Key? key}) : super(key: key);

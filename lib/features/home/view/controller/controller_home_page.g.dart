@@ -13,79 +13,15 @@ mixin _$ControllerHomePage on _ControllerHomePageBase, Store {
       Atom(name: '_ControllerHomePageBase.loading', context: context);
 
   @override
-  Resource<HomeEntity, ErrorApi> get loading {
+  Resource<List<HomeEntity>, ErrorApi> get loading {
     _$loadingAtom.reportRead();
     return super.loading;
   }
 
   @override
-  set loading(Resource<HomeEntity, ErrorApi> value) {
+  set loading(Resource<List<HomeEntity>, ErrorApi> value) {
     _$loadingAtom.reportWrite(value, super.loading, () {
       super.loading = value;
-    });
-  }
-
-  late final _$idAtom =
-      Atom(name: '_ControllerHomePageBase.id', context: context);
-
-  @override
-  String? get id {
-    _$idAtom.reportRead();
-    return super.id;
-  }
-
-  @override
-  set id(String? value) {
-    _$idAtom.reportWrite(value, super.id, () {
-      super.id = value;
-    });
-  }
-
-  late final _$nameAtom =
-      Atom(name: '_ControllerHomePageBase.name', context: context);
-
-  @override
-  String? get name {
-    _$nameAtom.reportRead();
-    return super.name;
-  }
-
-  @override
-  set name(String? value) {
-    _$nameAtom.reportWrite(value, super.name, () {
-      super.name = value;
-    });
-  }
-
-  late final _$typesAtom =
-      Atom(name: '_ControllerHomePageBase.types', context: context);
-
-  @override
-  ObservableList<String> get types {
-    _$typesAtom.reportRead();
-    return super.types;
-  }
-
-  @override
-  set types(ObservableList<String> value) {
-    _$typesAtom.reportWrite(value, super.types, () {
-      super.types = value;
-    });
-  }
-
-  late final _$smallAtom =
-      Atom(name: '_ControllerHomePageBase.small', context: context);
-
-  @override
-  String? get small {
-    _$smallAtom.reportRead();
-    return super.small;
-  }
-
-  @override
-  set small(String? value) {
-    _$smallAtom.reportWrite(value, super.small, () {
-      super.small = value;
     });
   }
 
@@ -114,11 +50,7 @@ mixin _$ControllerHomePage on _ControllerHomePageBase, Store {
   @override
   String toString() {
     return '''
-loading: ${loading},
-id: ${id},
-name: ${name},
-types: ${types},
-small: ${small}
+loading: ${loading}
     ''';
   }
 }

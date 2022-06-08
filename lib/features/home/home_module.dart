@@ -10,8 +10,8 @@ class HomeModule extends Module {
 List<Bind> get binds => [
     Bind<AbstractHomeDataSource>((i) => HomeDataSource()),
     Bind<AbstractRepositoryApi>((i) => RepositoryApi()),
-    Bind<ControllerHomePage>((i) => ControllerHomePage()),
     Bind<AbstractUserCaseHome>((i) => UserCaseHome()),
+    Bind<ControllerHomePage>((i) => ControllerHomePage()),
 
 ];
 
