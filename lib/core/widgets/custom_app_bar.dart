@@ -15,6 +15,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      iconTheme: IconThemeData(color: ColorsApp.appRedDetails),
       elevation: 0,
       backgroundColor: ColorsApp.appGreyBackground,
       title: SizedBox(
