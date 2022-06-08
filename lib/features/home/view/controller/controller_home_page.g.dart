@@ -33,6 +33,20 @@ mixin _$ControllerHomePage on _ControllerHomePageBase, Store {
     return _$listCardsAsyncAction.run(() => super.listCards());
   }
 
+  late final _$_ControllerHomePageBaseActionController =
+      ActionController(name: '_ControllerHomePageBase', context: context);
+
+  @override
+  void pokemonSmall(String newValue) {
+    final _$actionInfo = _$_ControllerHomePageBaseActionController.startAction(
+        name: '_ControllerHomePageBase.pokemonSmall');
+    try {
+      return super.pokemonSmall(newValue);
+    } finally {
+      _$_ControllerHomePageBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
