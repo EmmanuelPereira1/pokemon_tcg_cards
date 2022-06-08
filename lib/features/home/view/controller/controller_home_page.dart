@@ -21,10 +21,8 @@ abstract class _ControllerHomePageBase with Store {
     if (resource.hasError) {
       return Resource.failed(error: ErrorApi.apiError);
     } else {
-      return Resource.success();
-    }
     loading = resource;
     return Resource.success();
-
+    }
   }
 }
