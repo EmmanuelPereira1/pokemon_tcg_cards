@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pokemon_tcg_cards/features/home/data/data_sources/home_data_source.dart';
 import 'package:pokemon_tcg_cards/features/home/data/repositories/repository.dart';

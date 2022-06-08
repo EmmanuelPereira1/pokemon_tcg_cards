@@ -10,21 +10,19 @@ part 'controller_home_page.g.dart';
 class ControllerHomePage = _ControllerHomePageBase with _$ControllerHomePage;
 
 abstract class _ControllerHomePageBase with Store {
-
   final _listPokemon = Modular.get<AbstractUserCaseHome>();
 
-  @observable 
-  Resource<HomeEntity,ErrorApi> loading = Resource.loading();
-  
+  @observable
+  Resource<HomeEntity, ErrorApi> loading = Resource.loading();
+
   @observable
   String? id = 'id';
 
   @observable
   String? name = 'name';
 
-
   @observable
-  List<String> types = ['types'];
+  ObservableList<String> types = ['types'].asObservable();
 
   @observable
   String? small = 'small';
@@ -32,16 +30,13 @@ abstract class _ControllerHomePageBase with Store {
   @action
   void pokemonSmall(String newValue) => small = newValue;
 
-  
-
-@action
-  Future<Resource<void, ErrorApi>> listCards(
-  ) async {
+  @action
+  Future<Resource<void, ErrorApi>> listCards() async {
     final resource = await _listPokemon.userCaseApi(id, name, types, small);
     if (resource.hasError) {
       return Resource.failed(error: ErrorApi.apiError);
+    } else {
+      return Resource.success();
     }
-    // user = resource;
-    return Resource.success();
   }
 }
