@@ -1,0 +1,3 @@
+enum ErrorPokeInfoApi {
+  apiError, unknown
+}

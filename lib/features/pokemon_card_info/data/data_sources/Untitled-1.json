@@ -1,0 +1,18 @@
+{
+    "id": "xy1-1",
+    "name": "Venusaur-EX",
+    "number": "1",
+    "images": {
+        "small": "https://images.pokemontcg.io/xy1/1.png",
+        "large": "https://images.pokemontcg.io/xy1/1_hires.png"
+    },
+    "cardmarket": {
+        "url": "https://prices.pokemontcg.io/cardmarket/xy1-1",
+        "updatedAt": "2022/06/08",
+        "prices": {
+            "averageSellPrice": 4.38,
+            "lowPrice": 2.8,
+            "trendPrice": 5.17
+        }
+    }
+}
