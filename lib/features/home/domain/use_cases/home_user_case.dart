@@ -6,29 +6,18 @@ import '../../../../core/generics/resource.dart';
 import '../../data/error_api.dart';
 
 abstract class AbstractUserCaseHome {
-  Future<Resource<HomeEntity, ErrorApi>> userCaseApi (
-  String? id,
-  String? name,
-  List<String>? types,
-  String? small,
-    );
+  Future<Resource<List<HomeEntity>, ErrorApi>> userCaseApi();
 }
 
 class UserCaseHome implements AbstractUserCaseHome {
-
   @override
-  Future<Resource<HomeEntity, ErrorApi>> userCaseApi (
-  String? id,
-  String? name,
-  List<String>? types,
-  String? small,
-    ) async {
-  final _respository = Modular.get<AbstractRepositoryApi>();
+  Future<Resource<List<HomeEntity>, ErrorApi>> userCaseApi() async {
+    final _respository = Modular.get<AbstractRepositoryApi>();
 
-  final resource = await _respository.homeRepository(id, name, types, small);
-  if (resource.hasError){
-    return Resource.failed(error: ErrorApi.apiError);
-  }
-  return Resource.success(data: resource.data);
+    final resource = await _respository.homeRepository();
+    if (resource.hasError) {
+      return Resource.failed(error: ErrorApi.apiError);
     }
+    return Resource.success(data: resource.data);
+  }
 }
