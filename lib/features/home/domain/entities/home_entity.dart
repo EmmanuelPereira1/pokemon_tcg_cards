@@ -26,8 +26,8 @@ class Data {
   String? rarity;
   Images? images;
 
-  Data(
-      {this.id,
+  Data({
+      this.id,
       this.name,
       this.types,
       this.rules,
