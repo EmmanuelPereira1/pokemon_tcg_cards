@@ -9,25 +9,26 @@ import '../../../../core/adapters/remote_client/remote_client.dart';
 
 abstract class AbstractHomeDataSource {
   Future<Resource<Map<String, dynamic>, ErrorApi>> dataSourceApi (
-
+    String? id,
+  String? name,
+  List<String>? types,
+  String? small,
     );
 }
 
 class HomeDataSource implements AbstractHomeDataSource {
   final _remoteClient = Modular.get<RemoteClient>();
+
+  @override
 Future<Resource<Map<String, dynamic>, ErrorApi>> dataSourceApi (
-) async {
+  String? id,
+  String? name,
+  List<String>? types,
+  String? small,
+  ) async {
   final response = await _remoteClient.get(
-    ApiConnect.baseUrl
+    ApiConnect.baseUrl,
     );
-  // {
-  //   'name' : name,
-  //   'id' : id,
-  //   'types' : types,
-  //   'rules' : rules,
-  //   'images' : images,
-  //   'small' : small
-  // });
   if (response.statusCode != 200) {
     return Resource.failed(error: ErrorApi.apiError);
   }
