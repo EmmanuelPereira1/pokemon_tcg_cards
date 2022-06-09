@@ -12,15 +12,16 @@ abstract class _PokeInfoControllerBase with Store {
   final _pokeInfo = Modular.get<AbstractUseCasePokeInfo>();
 
   @observable
-  Resource<List<InfoPokemonEntity>, ErrorApi> loading = Resource.loading();
+  Resource<InfoPokemonEntity, ErrorApi> loading = Resource.loading();
 
   @action
-  Future<Resource<void, ErrorApi>> pokeInfo() async {
-    final resource = await _pokeInfo.useCaseInfoPokeApi();
+  Future<Resource<void, ErrorApi>> pokeInfo(String id) async {
+    final resource = await _pokeInfo.useCaseInfoPokeApi(id);
 
     if (resource.hasError) {
       return Resource.failed(error: ErrorApi.apiError);
     }
+    loading = resource;
     return Resource.success();
   }
 }
