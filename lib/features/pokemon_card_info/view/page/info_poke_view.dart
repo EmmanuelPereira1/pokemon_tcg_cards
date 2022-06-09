@@ -22,7 +22,7 @@ class _PokeInfoViewState extends State<PokeInfoView> {
       drawer: CustomDrawer(),
       appBar: CustomAppBar(),
       body: Container(
-        
+child: Text(""),
       ),
 
     );
