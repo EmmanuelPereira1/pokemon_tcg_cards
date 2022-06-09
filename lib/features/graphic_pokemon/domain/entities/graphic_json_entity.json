@@ -1,0 +1,21 @@
+{
+    "id": "pl3-1",
+    "tcgplayer": {
+      "url": "https://prices.pokemontcg.io/tcgplayer/pl3-1",
+      "updatedAt": "2022/06/06",
+      "prices": {
+        "holofoil": {
+          "low": 2.76,
+          "mid": 3.03,
+          "high": 6.0,
+          "market": 5.61
+        },
+        "reverseHolofoil": {
+          "low": 1.25,
+          "mid": 2.86,
+          "high": 4.98,
+          "market": 4.98
+        }
+      }
+    }
+  }

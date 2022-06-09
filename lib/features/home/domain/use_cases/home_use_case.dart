@@ -1,7 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pokemon_tcg_cards/features/home/data/repositories/repository.dart';
 import 'package:pokemon_tcg_cards/features/home/domain/entities/home_entity.dart';
-
 import '../../../../core/generics/resource.dart';
 import '../../data/error_api.dart';
 
