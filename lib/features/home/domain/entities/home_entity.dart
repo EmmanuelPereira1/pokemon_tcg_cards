@@ -1,11 +1,13 @@
 class HomeEntity {
   String? name;
+  String? id;
   Images? images;
 
   HomeEntity({this.name, this.images});
 
   HomeEntity.fromJson(Map<String, dynamic> json) {
     name = json['name'];
+    id = json['id'];
     images =
         json['images'] != null ? new Images.fromJson(json['images']) : null;
   }
@@ -13,6 +15,7 @@ class HomeEntity {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['name'] = this.name;
+    data['id'] = this.id;
     if (this.images != null) {
       data['images'] = this.images!.toJson();
     }

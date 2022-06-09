@@ -3,7 +3,7 @@ import 'package:mobx/mobx.dart';
 import 'package:pokemon_tcg_cards/core/generics/resource.dart';
 import 'package:pokemon_tcg_cards/features/home/data/error_api.dart';
 import 'package:pokemon_tcg_cards/features/home/domain/entities/home_entity.dart';
-import 'package:pokemon_tcg_cards/features/home/domain/use_cases/home_user_case.dart';
+import 'package:pokemon_tcg_cards/features/home/domain/use_cases/home_use_case.dart';
 part 'controller_home_page.g.dart';
 
 class ControllerHomePage = _ControllerHomePageBase with _$ControllerHomePage;
