@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:pokemon_tcg_cards/core/widgets/custom_buttom.dart';
 import 'package:pokemon_tcg_cards/features/home/view/controller/controller_home_page.dart';
 
 import '../../../../core/resources/ColorsApp.dart';
@@ -26,30 +27,31 @@ class _ViewHomePageState extends State<ViewHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: ColorsApp.appGreyBackground,
       drawer: CustomDrawer(),
       appBar: CustomAppBar(),
-      body: Container(
-        child: Stack(
-          children: [
-            ListView.builder(
-              itemBuilder: ((context, i) {
-                return Card(
-                  child: ListTile(
-                    onTap: () {},
-                    title: Observer(builder: (_) {
-                      return Text(
-                        _controller.loading.data![i].name.toString(),
-                        style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                        textAlign: TextAlign.center,
-                      );
-                    }),
+      body: Stack(
+        children: [
+          ListView.builder(
+            itemBuilder: ((context, i) {
+              return Observer(builder: (_) {
+                return CardPokemon(
+                  pokemonName: _controller.loading.data![i].name.toString(),
+                  onPressed: () {
+                    
+                  },
+                  pokemonCard: Image(
+                    image: NetworkImage(_controller
+                        .loading.data![i].images!.small
+                        .toString(),
+                        scale: 4),
                   ),
                 );
-              }),
-            )
-          ],
-        ),
+              });
+            }),
+          )
+        ],
       ),
     );
   }
