@@ -24,5 +24,6 @@ abstract class _ControllerHomePageBase with Store {
     loading = resource;
     return Resource.success();
     }
+
   }
 }
