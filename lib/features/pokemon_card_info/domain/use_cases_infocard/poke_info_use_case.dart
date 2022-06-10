@@ -10,8 +10,8 @@ abstract class AbstractUseCasePokeInfo {
 
 class UseCasePokeInfo implements AbstractUseCasePokeInfo {
   @override
-  Future<Resource<InfoPokemonEntity, ErrorApi>>
-      useCaseInfoPokeApi(String id) async {
+  Future<Resource<InfoPokemonEntity, ErrorApi>> useCaseInfoPokeApi(
+      String id) async {
     final _repository = Modular.get<AbstractPokeInfoRepositoryApi>();
 
     final resource = await _repository.fetchPokemonDetails(id);

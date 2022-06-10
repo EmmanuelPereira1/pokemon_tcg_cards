@@ -7,16 +7,16 @@ import 'package:pokemon_tcg_cards/features/graphic_pokemon/data/graphic_error_ap
 import '../../../../core/generics/resource.dart';
 
 abstract class AbstractGraphicDataSource{
-  Future<Resource<Map<String, dynamic>, GraphicErrorApi>> dataSourceApi();
+  Future<Resource<Map<String, dynamic>, GraphicErrorApi>> fetchPokemonPrices(String id);
 }
 
 class GraphicDataSource implements AbstractGraphicDataSource {
   final _remoteClient = Modular.get<RemoteClient>();
 
   @override
-  Future<Resource<Map<String, dynamic>, GraphicErrorApi>> dataSourceApi() async {
+  Future<Resource<Map<String, dynamic>, GraphicErrorApi>> fetchPokemonPrices(String id) async {
     final response = await _remoteClient.get(
-      ApiConnect.baseUrl,
+      ApiConnect.baseUrl + id,
     );
     if (response.statusCode != 200) {
       return Resource.failed(error: GraphicErrorApi.apiError);

@@ -1,11 +1,13 @@
 class GraphicEntity {
   String? id;
+  String? name;
   Tcgplayer? tcgplayer;
 
-  GraphicEntity({this.id, this.tcgplayer});
+  GraphicEntity({this.id, this.name, this.tcgplayer});
 
   GraphicEntity.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    name = json['name'];
     tcgplayer = json['tcgplayer'] != null
         ? new Tcgplayer.fromJson(json['tcgplayer'])
         : null;
@@ -14,6 +16,7 @@ class GraphicEntity {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
+    data['name'] = this.name;    
     if (this.tcgplayer != null) {
       data['tcgplayer'] = this.tcgplayer!.toJson();
     }
@@ -76,7 +79,7 @@ class Prices {
 class Holofoil {
   double? low;
   double? mid;
-  int? high;
+  double? high;
   double? market;
 
   Holofoil({this.low, this.mid, this.high, this.market});
