@@ -4,7 +4,7 @@ import 'package:pokemon_tcg_cards/core/resources/FontsApp.dart';
 
 class InfoExtendCard extends StatelessWidget {
   final String pokeName;
-  final String pokeNumber;
+  final String pokeRarity;
   final Image extendPokeCard;
   final Function()? priceButton;
   final Widget? child;
@@ -12,10 +12,10 @@ class InfoExtendCard extends StatelessWidget {
   const InfoExtendCard(
       {Key? key,
       required this.pokeName,
-      required this.pokeNumber,
       required this.extendPokeCard,
-       this.priceButton,
-       this.child})
+      required this.pokeRarity,
+      this.priceButton,
+      this.child})
       : super(key: key);
 
   @override
@@ -38,16 +38,16 @@ class InfoExtendCard extends StatelessWidget {
                   color: ColorsFont.appFontDetails,
                 ),
               ),
-              const SizedBox(
-                height: 16,
-              ),
               Flexible(
                 child: Text(
-                  pokeNumber,
+                  pokeRarity,
                   style: FontsApp.mainFontdetails20.copyWith(
-                    color: ColorsFont.appPokeInfo,
-                  ),
+                  color: ColorsFont.appPokeInfo,
                 ),
+                ),
+              ),
+              const SizedBox(
+                height: 16,
               ),
               SizedBox(
                 height: 64,

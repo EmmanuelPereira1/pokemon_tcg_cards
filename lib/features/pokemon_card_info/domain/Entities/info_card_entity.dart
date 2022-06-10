@@ -1,17 +1,22 @@
 class InfoPokemonEntity {
   String? id;
   String? name;
-  String? number;
   Images? images;
   Cardmarket? cardmarket;
+  String? rarity;
 
-  InfoPokemonEntity(
-      {this.id, this.name, this.number, this.images, this.cardmarket});
+  InfoPokemonEntity({
+    this.id,
+    this.name,
+    this.images,
+    this.cardmarket,
+    this.rarity,
+  });
 
   InfoPokemonEntity.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    number = json['number'];
+    rarity = json['rarity'];
     images =
         json['images'] != null ? new Images.fromJson(json['images']) : null;
     cardmarket = json['cardmarket'] != null
@@ -23,7 +28,7 @@ class InfoPokemonEntity {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['name'] = this.name;
-    data['number'] = this.number;
+    data['rarity'] = this.rarity;
     if (this.images != null) {
       data['images'] = this.images!.toJson();
     }
