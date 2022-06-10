@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pokemon_tcg_cards/core/resources/ColorsApp.dart';
+import 'package:pokemon_tcg_cards/core/resources/text_style.dart';
 import 'package:pokemon_tcg_cards/core/widgets/custom_app_bar.dart';
 import 'package:pokemon_tcg_cards/core/widgets/custom_container_prices.dart';
 import 'package:pokemon_tcg_cards/core/widgets/custom_drawer.dart';
 import 'package:pokemon_tcg_cards/features/graphic_pokemon/view/controller/controller_graphic.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ViewGraphic extends StatefulWidget {
   final String pokemonId;
@@ -19,7 +21,6 @@ class _ViewGraphicState extends State<ViewGraphic> {
   final _controller = Modular.get<ControllerGraphic>();
 
   @override
-
   @override
   void initState() {
     _controller.pricePokemon(widget.pokemonId);
@@ -40,16 +41,16 @@ class _ViewGraphicState extends State<ViewGraphic> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 25,
+                  height: 100,
                 ),
-                Text('PRICES'),
-                Observer(builder: (_) {
-                  return Text('${_controller.loading.data!.name!}');
-                }),
+                Text('PRICES', style: CustomTextStyle.customTitleTextStyle),
                 SizedBox(
                   height: 25,
                 ),
-                Text(''),
+                Observer(builder: (_) {
+                  return Text('${_controller.loading.data!.name!}',
+                      style: CustomTextStyle.customSubTitleTextStyle);
+                }),
                 SizedBox(
                   height: 25,
                 ),
@@ -58,6 +59,7 @@ class _ViewGraphicState extends State<ViewGraphic> {
                   children: [
                     Observer(builder: (_) {
                       return CustomContainerPrices(
+                        text: 'HOLOFOIL',
                         highPrice: _controller
                             .loading.data!.tcgplayer!.prices!.holofoil!.high!,
                         midPrice: _controller
@@ -69,9 +71,9 @@ class _ViewGraphicState extends State<ViewGraphic> {
                     SizedBox(width: 20),
                     Observer(builder: (_) {
                       return CustomContainerPrices(
+                        text: 'REVERSE',
                         highPrice: _controller.loading.data!.tcgplayer!.prices!
-                            .reverseHolofoil!.high!
-                            ,
+                            .reverseHolofoil!.high!,
                         midPrice: _controller.loading.data!.tcgplayer!.prices!
                             .reverseHolofoil!.mid!,
                         lowPrice: _controller.loading.data!.tcgplayer!.prices!
@@ -80,7 +82,35 @@ class _ViewGraphicState extends State<ViewGraphic> {
                     })
                   ],
                 ),
-                ElevatedButton(onPressed: () {}, child: Container())
+                SizedBox(
+                  height: 40,
+                ),
+                Observer(builder: (_) {
+                  return ElevatedButton(
+                      style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(2),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          ),
+                        ),
+                        backgroundColor:
+                            MaterialStateProperty.all(ColorsApp.appRedDetails),
+                      ),
+                      onPressed: () async {
+                        final Uri url = Uri.parse(
+                            "${_controller.loading.data!.tcgplayer!.url!}");
+                        if (await launchUrl(
+                          url,
+                          mode: LaunchMode.inAppWebView,
+                        ))
+                          ;
+                        else
+                          throw "Could not launch $url";
+                      },
+                      child: Text('More Informations'));
+                })
               ],
             ),
           )),
