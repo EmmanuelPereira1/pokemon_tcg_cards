@@ -13,24 +13,24 @@ mixin _$ControllerGraphic on _ControllerGraphicBase, Store {
       Atom(name: '_ControllerGraphicBase.loading', context: context);
 
   @override
-  Resource<List<GraphicEntity>, GraphicErrorApi> get loading {
+  Resource<GraphicEntity, GraphicErrorApi> get loading {
     _$loadingAtom.reportRead();
     return super.loading;
   }
 
   @override
-  set loading(Resource<List<GraphicEntity>, GraphicErrorApi> value) {
+  set loading(Resource<GraphicEntity, GraphicErrorApi> value) {
     _$loadingAtom.reportWrite(value, super.loading, () {
       super.loading = value;
     });
   }
 
-  late final _$listCardsAsyncAction =
-      AsyncAction('_ControllerGraphicBase.listCards', context: context);
+  late final _$pricePokemonAsyncAction =
+      AsyncAction('_ControllerGraphicBase.pricePokemon', context: context);
 
   @override
-  Future<Resource<void, GraphicErrorApi>> listCards() {
-    return _$listCardsAsyncAction.run(() => super.listCards());
+  Future<Resource<void, GraphicErrorApi>> pricePokemon(String id) {
+    return _$pricePokemonAsyncAction.run(() => super.pricePokemon(id));
   }
 
   @override

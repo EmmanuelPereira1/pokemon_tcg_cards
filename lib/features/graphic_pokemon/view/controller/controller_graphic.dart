@@ -10,19 +10,18 @@ class ControllerGraphic = _ControllerGraphicBase with _$ControllerGraphic;
 
 abstract class _ControllerGraphicBase with Store {
   final _graphic = Modular.get<AbstractGraphicUseCase>();
-  
-  @observable 
-  Resource<List<GraphicEntity>, GraphicErrorApi> loading = Resource.loading();
+
+  @observable
+  Resource<GraphicEntity, GraphicErrorApi> loading = Resource.loading();
 
   @action
-    Future<Resource<void, GraphicErrorApi>> listCards() async {
-    final resource = await _graphic.userCaseApi();
+  Future<Resource<void, GraphicErrorApi>> pricePokemon(String id) async {
+    final resource = await _graphic.userCasePricesPokemon(id);
 
     if (resource.hasError) {
       return Resource.failed(error: GraphicErrorApi.apiError);
-    } else {
+    }
     loading = resource;
     return Resource.success();
-    }
   }
 }
