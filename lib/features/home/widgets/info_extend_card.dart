@@ -21,7 +21,7 @@ class InfoExtendCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(60),
+      padding: const EdgeInsets.fromLTRB(24, 48, 24, 48),
       child: Center(
         child: Card(
           elevation: 4,

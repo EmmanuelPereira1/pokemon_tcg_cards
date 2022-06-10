@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pokemon_tcg_cards/core/resources/ColorsApp.dart';
+import 'package:pokemon_tcg_cards/core/resources/FontsApp.dart';
 import 'package:pokemon_tcg_cards/core/widgets/custom_app_bar.dart';
 import 'package:pokemon_tcg_cards/core/widgets/custom_drawer.dart';
 import 'package:pokemon_tcg_cards/features/home/domain/entities/home_entity.dart';
@@ -34,15 +35,22 @@ class _PokeInfoViewState extends State<PokeInfoView> {
       appBar: CustomAppBar(),
       body: Observer(builder: (_) {
         return InfoExtendCard(
-            pokeNumber: _controller.loading.data!.number!,
-            extendPokeCard: Image(
-              image: NetworkImage(
-                _controller.loading.data!.images!.large!,
-              ),
+          pokeNumber: _controller.loading.data!.number!,
+          extendPokeCard: Image(
+            image: NetworkImage(
+              _controller.loading.data!.images!.large!,
             ),
-            pokeName: _controller.loading.data!.name!
-            // pokeNumber: widget.pokemon.number.toString(),
-            );
+          ),
+          pokeName: _controller.loading.data!.name!,
+          priceButton: () {},
+          child: Text(
+            'Current Price',
+            style: FontsApp.mainFontdetails20.copyWith(
+              color: ColorsApp.appGreyBackground,
+            ),
+          ),
+          // pokeNumber: widget.pokemon.number.toString(),
+        );
       }),
     );
   }
