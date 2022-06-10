@@ -13,13 +13,13 @@ mixin _$PokeInfoController on _PokeInfoControllerBase, Store {
       Atom(name: '_PokeInfoControllerBase.loading', context: context);
 
   @override
-  Resource<List<InfoPokemonEntity>, ErrorApi> get loading {
+  Resource<InfoPokemonEntity, ErrorApi> get loading {
     _$loadingAtom.reportRead();
     return super.loading;
   }
 
   @override
-  set loading(Resource<List<InfoPokemonEntity>, ErrorApi> value) {
+  set loading(Resource<InfoPokemonEntity, ErrorApi> value) {
     _$loadingAtom.reportWrite(value, super.loading, () {
       super.loading = value;
     });
@@ -29,8 +29,8 @@ mixin _$PokeInfoController on _PokeInfoControllerBase, Store {
       AsyncAction('_PokeInfoControllerBase.pokeInfo', context: context);
 
   @override
-  Future<Resource<void, ErrorApi>> pokeInfo() {
-    return _$pokeInfoAsyncAction.run(() => super.pokeInfo());
+  Future<Resource<void, ErrorApi>> pokeInfo(String id) {
+    return _$pokeInfoAsyncAction.run(() => super.pokeInfo(id));
   }
 
   @override

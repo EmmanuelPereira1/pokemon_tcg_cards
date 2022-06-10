@@ -5,16 +5,16 @@ import 'package:pokemon_tcg_cards/features/pokemon_card_info/data/repositories/p
 import 'package:pokemon_tcg_cards/features/pokemon_card_info/domain/Entities/info_card_entity.dart';
 
 abstract class AbstractUseCasePokeInfo {
-  Future<Resource<List<InfoPokemonEntity>, ErrorApi>> useCaseInfoPokeApi();
+  Future<Resource<InfoPokemonEntity, ErrorApi>> useCaseInfoPokeApi(String id);
 }
 
 class UseCasePokeInfo implements AbstractUseCasePokeInfo {
   @override
-  Future<Resource<List<InfoPokemonEntity>, ErrorApi>>
-      useCaseInfoPokeApi() async {
+  Future<Resource<InfoPokemonEntity, ErrorApi>>
+      useCaseInfoPokeApi(String id) async {
     final _repository = Modular.get<AbstractPokeInfoRepositoryApi>();
 
-    final resource = await _repository.pokeInfoRepository();
+    final resource = await _repository.fetchPokemonDetails(id);
     if (resource.hasError) {
       return Resource.failed(error: ErrorApi.apiError);
     }

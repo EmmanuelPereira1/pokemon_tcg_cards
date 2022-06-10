@@ -6,16 +6,16 @@ import 'package:pokemon_tcg_cards/features/home/data/error_api.dart';
 import '../../../../../core/adapters/remote_client/remote_client.dart';
 
 abstract class AbstractPokeInfoDataSource {
-  Future<Resource<Map<String, dynamic>, ErrorApi>> pokeInfoDataSourceApi();
+  Future<Resource<Map<String, dynamic>, ErrorApi>> fetchPokemonCardDetails(String id);
 }
 
 class PokeInfoDataSource implements AbstractPokeInfoDataSource {
   final _remoteClient = Modular.get<RemoteClient>();
 
   @override
-  Future<Resource<Map<String, dynamic>, ErrorApi>> pokeInfoDataSourceApi() async {
+  Future<Resource<Map<String, dynamic>, ErrorApi>> fetchPokemonCardDetails(String id) async {
     final response = await _remoteClient.get(
-      ApiConnect.baseUrl,
+      ApiConnect.baseUrl + id,
     );
     if (response.statusCode != 200) {
       return Resource.failed(error: ErrorApi.apiError);
