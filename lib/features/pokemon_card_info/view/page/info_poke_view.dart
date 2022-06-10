@@ -5,8 +5,6 @@ import 'package:pokemon_tcg_cards/core/resources/ColorsApp.dart';
 import 'package:pokemon_tcg_cards/core/resources/FontsApp.dart';
 import 'package:pokemon_tcg_cards/core/widgets/custom_app_bar.dart';
 import 'package:pokemon_tcg_cards/core/widgets/custom_drawer.dart';
-import 'package:pokemon_tcg_cards/features/home/domain/entities/home_entity.dart';
-import 'package:pokemon_tcg_cards/features/home/view/controller/controller_home_page.dart';
 import 'package:pokemon_tcg_cards/features/home/widgets/info_extend_card.dart';
 import 'package:pokemon_tcg_cards/features/pokemon_card_info/view/controller/poke_info_controller.dart';
 
