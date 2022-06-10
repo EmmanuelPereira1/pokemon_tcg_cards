@@ -5,6 +5,7 @@ import 'package:pokemon_tcg_cards/core/resources/FontsApp.dart';
 class InfoExtendCard extends StatelessWidget {
   final String pokeName;
   final String pokeRarity;
+  final String pokeSerie;
   final Image extendPokeCard;
   final Function()? priceButton;
   final Widget? child;
@@ -14,6 +15,7 @@ class InfoExtendCard extends StatelessWidget {
       required this.pokeName,
       required this.extendPokeCard,
       required this.pokeRarity,
+      required this.pokeSerie,
       this.priceButton,
       this.child})
       : super(key: key);
@@ -38,16 +40,41 @@ class InfoExtendCard extends StatelessWidget {
                   color: ColorsFont.appFontDetails,
                 ),
               ),
-              Flexible(
-                child: Text(
-                  pokeRarity,
-                  style: FontsApp.mainFontdetails20.copyWith(
-                  color: ColorsFont.appPokeInfo,
-                ),
-                ),
+              RichText(
+                text: TextSpan(
+                    text: "Rarity: ",
+                    style: FontsApp.mainFontdetails20.copyWith(
+                      color: ColorsFont.appFontDetails,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: pokeRarity,
+                        style: FontsApp.mainFontdetails20.copyWith(
+                          color: ColorsFont.appPokeInfo,
+                        ),
+                      ),
+                    ]),
               ),
               const SizedBox(
-                height: 16,
+                height: 4,
+              ),
+              RichText(
+                text: TextSpan(
+                    text: "Serie: ",
+                    style: FontsApp.mainFontdetails20.copyWith(
+                      color: ColorsFont.appFontDetails,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: pokeSerie,
+                        style: FontsApp.mainFontdetails20.copyWith(
+                          color: ColorsFont.appPokeInfo,
+                        ),
+                      ),
+                    ]),
+              ),
+              const SizedBox(
+                height: 10,
               ),
               SizedBox(
                 height: 64,

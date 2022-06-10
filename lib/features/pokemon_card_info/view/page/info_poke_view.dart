@@ -43,6 +43,7 @@ class _PokeInfoViewState extends State<PokeInfoView> {
           ),
           pokeName: _controller.loading.data!.name!,
           pokeRarity: _controller.loading.data!.rarity!,
+          pokeSerie: _controller.loading.data!.set!.series!,
           priceButton: () {},
           child: Text(
             'Current Price',
