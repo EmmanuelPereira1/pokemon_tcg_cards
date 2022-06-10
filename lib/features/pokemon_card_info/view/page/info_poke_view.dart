@@ -35,13 +35,15 @@ class _PokeInfoViewState extends State<PokeInfoView> {
       appBar: CustomAppBar(),
       body: Observer(builder: (_) {
         return InfoExtendCard(
-          pokeNumber: _controller.loading.data!.number!,
+         
           extendPokeCard: Image(
             image: NetworkImage(
               _controller.loading.data!.images!.large!,
             ),
           ),
           pokeName: _controller.loading.data!.name!,
+          pokeRarity: _controller.loading.data!.rarity!,
+          pokeSerie: _controller.loading.data!.set!.series!,
           priceButton: () {},
           child: Text(
             'Current Price',
@@ -49,7 +51,6 @@ class _PokeInfoViewState extends State<PokeInfoView> {
               color: ColorsApp.appGreyBackground,
             ),
           ),
-          // pokeNumber: widget.pokemon.number.toString(),
         );
       }),
     );

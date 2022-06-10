@@ -1,17 +1,25 @@
 class InfoPokemonEntity {
   String? id;
   String? name;
-  String? number;
   Images? images;
   Cardmarket? cardmarket;
+  String? rarity;
+  Set? set;
 
-  InfoPokemonEntity(
-      {this.id, this.name, this.number, this.images, this.cardmarket});
+  InfoPokemonEntity({
+    this.id,
+    this.name,
+    this.images,
+    this.cardmarket,
+    this.rarity,
+    this.set,
+  });
 
   InfoPokemonEntity.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    number = json['number'];
+    rarity = json['rarity'];
+    set = json['set'] != null ? new Set.fromJson(json['set']) : null;
     images =
         json['images'] != null ? new Images.fromJson(json['images']) : null;
     cardmarket = json['cardmarket'] != null
@@ -23,13 +31,33 @@ class InfoPokemonEntity {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['name'] = this.name;
-    data['number'] = this.number;
+    data['rarity'] = this.rarity;
     if (this.images != null) {
       data['images'] = this.images!.toJson();
     }
     if (this.cardmarket != null) {
       data['cardmarket'] = this.cardmarket!.toJson();
     }
+    return data;
+  }
+}
+
+class Set {
+  String? series;
+
+  Set({
+    this.series,
+  });
+
+  Set.fromJson(Map<String, dynamic> json) {
+    series = json['series'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+
+    data['series'] = this.series;
+
     return data;
   }
 }
