@@ -6,11 +6,13 @@ class CustomContainerPrices extends StatelessWidget {
   final double? highPrice;
   final double? midPrice;
   final double? lowPrice;
+  final String text;
   CustomContainerPrices(
       {Key? key,
       required this.highPrice,
       required this.midPrice,
-      required this.lowPrice})
+      required this.lowPrice,
+      required this.text})
       : super(key: key);
 
   @override
@@ -19,9 +21,15 @@ class CustomContainerPrices extends StatelessWidget {
       padding: const EdgeInsets.all(4.0),
       child: Column(
         children: [
+          Text(text,
+          style: GoogleFonts.lato(
+            color: ColorsApp.appRedDetails
+          ),
+          ),
+          SizedBox(height: 10,),
           Container(
             height: 50,
-            width: 130,
+            width: 150,
             decoration: BoxDecoration(
               border: Border.all(color: ColorsApp.appRedDetails),
               borderRadius: BorderRadius.all(Radius.circular(40)),
@@ -47,7 +55,7 @@ class CustomContainerPrices extends StatelessWidget {
           SizedBox(height: 10),
           Container(
             height: 50,
-            width: 130,
+            width: 150,
             decoration: BoxDecoration(
               border: Border.all(color: ColorsApp.appRedDetails),
               borderRadius: BorderRadius.all(Radius.circular(40)),
@@ -73,7 +81,7 @@ class CustomContainerPrices extends StatelessWidget {
           SizedBox(height: 10),
           Container(
             height: 50,
-            width: 130,
+            width: 150,
             decoration: BoxDecoration(
               border: Border.all(color: ColorsApp.appRedDetails),
               borderRadius: BorderRadius.all(Radius.circular(40)),

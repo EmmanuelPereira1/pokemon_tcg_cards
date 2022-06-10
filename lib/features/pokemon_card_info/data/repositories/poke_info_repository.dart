@@ -1,8 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pokemon_tcg_cards/core/generics/resource.dart';
-import 'package:pokemon_tcg_cards/features/home/data/data_sources/home_data_source.dart';
 import 'package:pokemon_tcg_cards/features/home/data/error_api.dart';
-import 'package:pokemon_tcg_cards/features/home/domain/entities/home_entity.dart';
 import '../../domain/Entities/info_card_entity.dart';
 import '../data_sources/pokeinfo_data_source.dart';
 
