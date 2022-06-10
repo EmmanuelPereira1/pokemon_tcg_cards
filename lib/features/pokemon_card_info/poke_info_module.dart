@@ -8,16 +8,15 @@ import 'package:pokemon_tcg_cards/features/pokemon_card_info/view/page/info_poke
 class PokeInfoModule extends Module {
   @override
   List<Bind> get binds => [
-  Bind<AbstractPokeInfoDataSource>((i) => PokeInfoDataSource()),
-  Bind<AbstractPokeInfoRepositoryApi>((i) =>PokeInfoRepositoryApi()),
-  Bind<AbstractUseCasePokeInfo>((i) => UseCasePokeInfo()),
-  Bind<PokeInfoController>((i) => PokeInfoController()),
-  ];
+        Bind<AbstractPokeInfoDataSource>((i) => PokeInfoDataSource()),
+        Bind<AbstractPokeInfoRepositoryApi>((i) => PokeInfoRepositoryApi()),
+        Bind<AbstractUseCasePokeInfo>((i) => UseCasePokeInfo()),
+        Bind<PokeInfoController>((i) => PokeInfoController()),
+      ];
 
-
-@override 
-List<ModularRoute> get routes => [
-  ChildRoute(Modular.initialRoute, child: (context, args) => PokeInfoView(pokemonId: args.data))
-];
-
+  @override
+  List<ModularRoute> get routes => [
+        ChildRoute(Modular.initialRoute,
+            child: (context, args) => PokeInfoView(pokemonId: args.data))
+      ];
 }

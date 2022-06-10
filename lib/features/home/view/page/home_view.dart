@@ -38,8 +38,10 @@ class _ViewHomePageState extends State<ViewHomePage> {
               return Observer(builder: (_) {
                 return CardPokemon(
                   pokemonName: _controller.loading.data![i].name.toString(),
+
                   onPressed: () {
-                    Modular.to.pushNamed('/pokeinfoview/', arguments: _controller.loading.data![i].id);
+                    Modular.to.pushNamed('/graphic/', arguments: _controller.loading.data![i].id);
+
                   },
                   pokemonCard: Image(
                     image: NetworkImage(

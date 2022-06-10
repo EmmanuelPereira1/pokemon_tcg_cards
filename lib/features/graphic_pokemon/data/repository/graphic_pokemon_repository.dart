@@ -7,22 +7,21 @@ import 'package:pokemon_tcg_cards/features/graphic_pokemon/data/graphic_error_ap
 import 'package:pokemon_tcg_cards/features/graphic_pokemon/domain/entities/graphic_entity.dart';
 
 abstract class AbstractGraphicRepository {
-  Future<Resource<List<GraphicEntity>, GraphicErrorApi>> homeRepository();
+  Future<Resource<GraphicEntity, GraphicErrorApi>> fetchPokemonGraphic(String id);
 }
 
 class GraphicRepository implements AbstractGraphicRepository {
   final _dataSource = Modular.get<AbstractGraphicDataSource>();
 
   @override
-  Future<Resource<List<GraphicEntity>, GraphicErrorApi>> homeRepository() async {
-    final resource = await _dataSource.dataSourceApi();
+  Future<Resource<GraphicEntity, GraphicErrorApi>> fetchPokemonGraphic(String id) async {
+    final resource = await _dataSource.fetchPokemonPrices(id);
     if (resource.hasError) {
       return Resource.failed(error: resource.error);
     }
-
-    final homeJson = resource.data;
-    final pokemonListFromApi = homeJson!["data"] as List;
-    final pokemonList = pokemonListFromApi.map((e) => GraphicEntity.fromJson(e)).toList();
-    return Resource.success(data: pokemonList);
+    final pokeInfoJson = resource.data;
+    final pokeInfoFromApi = pokeInfoJson!["data"] as Map<String, dynamic>;
+    final pokemonInfo = GraphicEntity.fromJson(pokeInfoFromApi);
+    return Resource.success(data: pokemonInfo);
   }
 }

@@ -17,6 +17,6 @@ class GraphicModule extends Module {
 
   @override 
 List<ModularRoute> get routes => [
-  ChildRoute(Modular.initialRoute, child: (context, args) => ViewGraphic())
+  ChildRoute(Modular.initialRoute, child: (context, args) => ViewGraphic(pokemonId: args.data))
 ];
 }

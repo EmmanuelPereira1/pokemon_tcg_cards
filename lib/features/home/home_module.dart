@@ -1,3 +1,4 @@
+
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pokemon_tcg_cards/features/home/data/data_sources/home_data_source.dart';
 import 'package:pokemon_tcg_cards/features/home/data/repositories/repository.dart';
@@ -17,6 +18,7 @@ List<Bind> get binds => [
 
 @override 
 List<ModularRoute> get routes => [
-  ChildRoute(Modular.initialRoute, child: (context, args) => ViewHomePage())
+  ChildRoute(Modular.initialRoute, child: (context, args) => ViewHomePage(),
+  )
 ];
 }
