@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:pokemon_tcg_cards/core/generics/resource.dart';
-import 'package:pokemon_tcg_cards/core/widgets/custom_circular_progress.dart';
+
 import 'package:pokemon_tcg_cards/features/home/data/error_api.dart';
 import 'package:pokemon_tcg_cards/features/home/domain/entities/home_entity.dart';
 import 'package:pokemon_tcg_cards/features/home/domain/use_cases/home_use_case.dart';
@@ -22,7 +22,7 @@ abstract class _ControllerHomePageBase with Store {
     if (resource.hasError) {
       return Resource.failed(error: ErrorApi.apiError);
     } else {
-      CustomCircularProgress();
+      
       loading = resource;
       return Resource.success();
     }
