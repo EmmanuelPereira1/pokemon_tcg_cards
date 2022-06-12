@@ -34,11 +34,9 @@ class _PokeInfoViewState extends State<PokeInfoView> {
       drawer: CustomDrawer(),
       appBar: CustomAppBar(),
       body: Observer(builder: (_) {
-        bool isLoading = _controller.isPageAtLoadingStatus;
-        if (isLoading == true) {
-          return CustomLoading();
-        } return
-        InfoExtendCard(
+        return _controller.loading.status == Status.loading
+        ? const Center(child: CustomLoading(),)
+        : InfoExtendCard(
           extendPokeCard: Image(
             image: NetworkImage(
               _controller.loading.data!.images!.large!,
