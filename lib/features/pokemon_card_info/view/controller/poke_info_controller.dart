@@ -22,6 +22,7 @@ abstract class _PokeInfoControllerBase with Store {
 
   @action
   Future<Resource<void, ErrorApi>> pokeInfo(String id) async {
+    
     final resource = await _pokeInfo.useCaseInfoPokeApi(id);
 
     if (resource.hasError) {

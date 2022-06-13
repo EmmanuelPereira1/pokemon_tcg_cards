@@ -39,19 +39,22 @@ class _ViewHomePageState extends State<ViewHomePage> {
             itemBuilder: ((context, i) {
               return Observer(builder: (_) {
                 return _controller.loading.status == Status.loading
-                ? const Center(child: CustomLoading(),)
-                : CardPokemon(
-                  pokemonName: _controller.loading.data![i].name.toString(),
-                  onPressed: () {
-                    Modular.to.pushNamed('/pokeinfoview/',
-                        arguments: _controller.loading.data![i].id);
-                  },
-                  pokemonCard: Image(
-                    image: NetworkImage(
-                        _controller.loading.data![i].images!.small.toString(),
-                        scale: 4),
-                  ),
-                );
+                    ? const Center(
+                        child: CustomLoading(),
+                      )
+                    : CardPokemon(
+                        pokemonName:
+                            _controller.loading.data![i].name.toString(),
+                        onPressed: () {
+                          Modular.to.pushNamed('/pokeinfoview/',
+                              arguments: _controller.loading.data![i].id);
+                        },
+                        pokemonCard:
+                            _controller.loading.data![i].images!.large!,
+                        pokeTypes: [
+                          _controller.loading.data![i].types!.toString()
+                        ],
+                      );
               });
             }),
           )

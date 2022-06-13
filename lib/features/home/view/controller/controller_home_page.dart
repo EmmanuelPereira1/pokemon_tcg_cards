@@ -22,9 +22,13 @@ abstract class _ControllerHomePageBase with Store {
     if (resource.hasError) {
       return Resource.failed(error: ErrorApi.apiError);
     } else {
-      
       loading = resource;
       return Resource.success();
     }
   }
+  // @action
+ 
+  // filterTypes() =>
+  //     pokemonTypes.where((pokemonTypes) => ['Grass'] == true).toList();
+      
 }

@@ -2,8 +2,9 @@ class HomeEntity {
   String? name;
   String? id;
   Images? images;
+  List<String>? types;
 
-  HomeEntity({this.name, this.images, this.id});
+  HomeEntity({this.name, this.images, this.id, this.types});
 
   HomeEntity.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -11,6 +12,7 @@ class HomeEntity {
     // number = json['number'];
     images =
         json['images'] != null ? new Images.fromJson(json['images']) : null;
+        types = json['types'].cast<String>();
     // cardmarket = json['cardmarket'] != null
     //     ? new Cardmarket.fromJson(json['cardmarket'])
     //     : null;
@@ -22,6 +24,7 @@ class HomeEntity {
     data['id'] = this.id;
     if (this.images != null) {
       data['images'] = this.images!.toJson();
+      data['types'] = this.types;
     }
     return data;
   }

@@ -13,10 +13,10 @@ class CustomLoading extends StatelessWidget {
         child: Column(
       children: [
         Container(
-          height: 160,
-          width: 160,
+          height: 180,
+          width: 180,
+          child: Lottie.asset('image/pokeballAnimation.json'),
         ),
-        Lottie.asset('image/pokeballAnimation.json'),
         Text(
           "Loading...",
           style: FontsApp.mainFontdetails20.copyWith(
