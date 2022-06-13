@@ -60,24 +60,30 @@ class _ViewGraphicState extends State<ViewGraphic> {
                     Observer(builder: (_) {
                       return CustomContainerPrices(
                         text: 'HOLOFOIL',
-                        highPrice: _controller
-                            .loading.data!.tcgplayer!.prices!.holofoil!.high!,
-                        midPrice: _controller
-                            .loading.data!.tcgplayer!.prices!.holofoil!.mid!,
-                        lowPrice: _controller
-                            .loading.data!.tcgplayer!.prices!.holofoil!.low!,
+                        highPrice:  _controller
+                            .loading.data!.tcgplayer!.prices!.holofoil!.high! != false ? _controller
+                            .loading.data!.tcgplayer!.prices!.holofoil!.high! : 0.0,
+                        midPrice:  _controller
+                            .loading.data!.tcgplayer!.prices!.holofoil!.mid! != false ? _controller
+                            .loading.data!.tcgplayer!.prices!.holofoil!.mid! : 0.0,
+                        lowPrice:  _controller
+                            .loading.data!.tcgplayer!.prices!.holofoil!.low! != false ? _controller
+                            .loading.data!.tcgplayer!.prices!.holofoil!.low! : 0.0,
                       );
                     }),
                     SizedBox(width: 20),
                     Observer(builder: (_) {
                       return CustomContainerPrices(
                         text: 'REVERSE',
-                        highPrice: _controller.loading.data!.tcgplayer!.prices!
-                            .reverseHolofoil!.high!,
-                        midPrice: _controller.loading.data!.tcgplayer!.prices!
-                            .reverseHolofoil!.mid!,
-                        lowPrice: _controller.loading.data!.tcgplayer!.prices!
-                            .reverseHolofoil!.low!,
+                        highPrice: _controller
+                            .loading.data!.tcgplayer!.prices!.reverseHolofoil!.high! != false ? _controller
+                            .loading.data!.tcgplayer!.prices!.reverseHolofoil!.high! : 0.0,
+                        midPrice:  _controller
+                            .loading.data!.tcgplayer!.prices!.reverseHolofoil!.mid! != false ? _controller
+                            .loading.data!.tcgplayer!.prices!.reverseHolofoil!.mid! : 0.0,
+                        lowPrice:  _controller
+                            .loading.data!.tcgplayer!.prices!.reverseHolofoil!.low! != false ? _controller
+                            .loading.data!.tcgplayer!.prices!.reverseHolofoil!.low! : 0.0,
                       );
                     })
                   ],

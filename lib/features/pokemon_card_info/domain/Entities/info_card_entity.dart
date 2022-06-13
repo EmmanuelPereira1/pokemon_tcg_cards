@@ -5,6 +5,7 @@ class InfoPokemonEntity {
   Cardmarket? cardmarket;
   String? rarity;
   Set? set;
+  Tcgplayer? tcgplayer;
 
   InfoPokemonEntity({
     this.id,
@@ -25,6 +26,9 @@ class InfoPokemonEntity {
     cardmarket = json['cardmarket'] != null
         ? new Cardmarket.fromJson(json['cardmarket'])
         : null;
+     tcgplayer = json['tcgplayer'] != null
+        ? new Tcgplayer.fromJson(json['tcgplayer'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -37,6 +41,34 @@ class InfoPokemonEntity {
     }
     if (this.cardmarket != null) {
       data['cardmarket'] = this.cardmarket!.toJson();
+    }
+    if (this.tcgplayer != null) {
+      data['tcgplayer'] = this.tcgplayer!.toJson();
+    }
+    return data;
+  }
+}
+
+class Tcgplayer {
+  String? url;
+  String? updatedAt;
+  Prices? prices;
+
+  Tcgplayer({this.url, this.updatedAt, this.prices});
+
+  Tcgplayer.fromJson(Map<String, dynamic> json) {
+    url = json['url'] ?? "" ;
+    updatedAt = json['updatedAt']?? "" ;
+    prices =
+        json['prices'] != null ? new Prices.fromJson(json['prices']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['url'] = this.url;
+    data['updatedAt'] = this.updatedAt;
+    if (this.prices != null) {
+      data['prices'] = this.prices!.toJson();
     }
     return data;
   }
@@ -127,3 +159,4 @@ class Prices {
     return data;
   }
 }
+
