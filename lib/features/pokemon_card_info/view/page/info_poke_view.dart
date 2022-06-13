@@ -7,6 +7,7 @@ import 'package:pokemon_tcg_cards/core/widgets/custom_app_bar.dart';
 import 'package:pokemon_tcg_cards/core/widgets/custom_drawer.dart';
 import 'package:pokemon_tcg_cards/features/home/widgets/info_extend_card.dart';
 import 'package:pokemon_tcg_cards/features/pokemon_card_info/view/controller/poke_info_controller.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PokeInfoView extends StatefulWidget {
   final String pokemonId;
@@ -33,7 +34,6 @@ class _PokeInfoViewState extends State<PokeInfoView> {
       appBar: CustomAppBar(),
       body: Observer(builder: (_) {
         return InfoExtendCard(
-         
           extendPokeCard: Image(
             image: NetworkImage(
               _controller.loading.data!.images!.large!,
@@ -42,7 +42,14 @@ class _PokeInfoViewState extends State<PokeInfoView> {
           pokeName: _controller.loading.data!.name!,
           pokeRarity: _controller.loading.data!.rarity!,
           pokeSerie: _controller.loading.data!.set!.series!,
-          priceButton: () {},
+          priceButton: () {
+           final Uri url = Uri.parse(
+                            "${_controller.loading.data!.tcgplayer!.url!}");
+                         launchUrl(
+                          url,
+                          mode: LaunchMode.inAppWebView,
+                         );          
+          },
           child: Text(
             'Current Price',
             style: FontsApp.mainFontdetails20.copyWith(

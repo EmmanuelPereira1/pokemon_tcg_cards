@@ -32,8 +32,8 @@ class Tcgplayer {
   Tcgplayer({this.url, this.updatedAt, this.prices});
 
   Tcgplayer.fromJson(Map<String, dynamic> json) {
-    url = json['url'];
-    updatedAt = json['updatedAt'];
+    url = json['url'] ?? "" ;
+    updatedAt = json['updatedAt']?? "" ;
     prices =
         json['prices'] != null ? new Prices.fromJson(json['prices']) : null;
   }
@@ -56,12 +56,12 @@ class Prices {
   Prices({this.holofoil, this.reverseHolofoil});
 
   Prices.fromJson(Map<String, dynamic> json) {
-    holofoil = json['holofoil'] != null
-        ? new Holofoil.fromJson(json['holofoil'])
-        : null;
-    reverseHolofoil = json['reverseHolofoil'] != null
-        ? new ReverseHolofoil.fromJson(json['reverseHolofoil'])
-        : null;
+    holofoil = json['holofoil'] ?? '';
+         new Holofoil.fromJson(json['holofoil'])
+       ;
+    reverseHolofoil = json['reverseHolofoil'] ?? '';
+         new ReverseHolofoil.fromJson(json['reverseHolofoil'])
+         ;
   }
 
   Map<String, dynamic> toJson() {
@@ -85,10 +85,10 @@ class Holofoil {
   Holofoil({this.low, this.mid, this.high, this.market});
 
   Holofoil.fromJson(Map<String, dynamic> json) {
-    low = json['low'];
-    mid = json['mid'];
-    high = json['high'];
-    market = json['market'];
+    low = json['low']?? "";
+    mid = json['mid']?? "";
+    high = json['high']?? "";
+    market = json['market']?? "";
   }
 
   Map<String, dynamic> toJson() {
@@ -110,10 +110,10 @@ class ReverseHolofoil {
   ReverseHolofoil({this.low, this.mid, this.high, this.market});
 
   ReverseHolofoil.fromJson(Map<String, dynamic> json) {
-    low = json['low'];
-    mid = json['mid'];
-    high = json['high'];
-    market = json['market'];
+    low = json['low']?? "";
+    mid = json['mid']?? "";
+    high = json['high']?? "";
+    market = json['market']?? "";
   }
 
   Map<String, dynamic> toJson() {

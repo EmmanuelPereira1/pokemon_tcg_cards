@@ -1,21 +1,21 @@
 {
-    "id": "pl3-1",
-    "tcgplayer": {
-      "url": "https://prices.pokemontcg.io/tcgplayer/pl3-1",
-      "updatedAt": "2022/06/06",
-      "prices": {
-        "holofoil": {
-          "low": 2.76,
-          "mid": 3.03,
-          "high": 6.0,
-          "market": 5.61
-        },
-        "reverseHolofoil": {
-          "low": 1.25,
-          "mid": 2.86,
-          "high": 4.98,
-          "market": 4.98
-        }
-      }
+  "id": "xy1-1",
+  "name": "Venusaur-EX",
+  "cardmarket": {
+    "url": "https://prices.pokemontcg.io/cardmarket/xy1-1",
+    "updatedAt": "2022/06/09",
+    "prices": {
+      "averageSellPrice": 5.37,
+      "lowPrice": 2.0,
+      "trendPrice": 5.72,
+      "reverseHoloTrend": 4.37,
+      "lowPriceExPlus": 2.0,
+      "avg1": 9.95,
+      "avg7": 6.02,
+      "avg30": 4.99,
+      "reverseHoloAvg1": 3.99,
+      "reverseHoloAvg7": 4.56,
+      "reverseHoloAvg30": 4.47
     }
   }
+}
