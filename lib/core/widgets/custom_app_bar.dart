@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pokemon_tcg_cards/core/resources/ColorsApp.dart';
+import 'package:pokemon_tcg_cards/features/search_pokemon/view/pages/view_search.dart';
 
 class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   const CustomAppBar({Key? key}) : super(key: key);
@@ -11,6 +13,8 @@ class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
+  final _search = Modular.get<SearchPokemon>();
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -31,7 +35,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
             color: ColorsApp.appRedDetails,
             size: 40,
           ),
-          onPressed: () {},
+          onPressed: () async {
+            await showSearch(context: context, delegate: _search);
+          },
         )
       ],
     );
