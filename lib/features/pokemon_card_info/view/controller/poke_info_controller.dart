@@ -14,6 +14,12 @@ abstract class _PokeInfoControllerBase with Store {
   @observable
   Resource<InfoPokemonEntity, ErrorApi> loading = Resource.loading();
 
+  @observable
+  bool isPageAtLoadingStatus = false;
+
+  @action
+  void setPageToLoadingStatus() => isPageAtLoadingStatus = true;
+
   @action
   Future<Resource<void, ErrorApi>> pokeInfo(String id) async {
     final resource = await _pokeInfo.useCaseInfoPokeApi(id);
