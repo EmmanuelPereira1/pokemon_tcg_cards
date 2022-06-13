@@ -1,0 +1,3 @@
+enum SearchErrorApi {
+  apiError
+}

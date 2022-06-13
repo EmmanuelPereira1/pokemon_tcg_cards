@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "id": "g1-1",
+      "name": "Venusaur-EX",
+      
+      
+      "types": [
+        "Grass"
+      ],
+     
+      
+      "attacks": [
+        {
+          "name": "Frog Hop",
+          "cost": [
+            "Grass",
+            "Colorless",
+            "Colorless"
+          ],
+          "convertedEnergyCost": 3,
+          "damage": "40+",
+          "text": "Flip a coin. If heads, this attack does 40 more damage."
+        },
+        {
+          "name": "Poison Impact",
+          "cost": [
+            "Grass",
+            "Grass",
+            "Colorless",
+            "Colorless"
+          ],
+          "convertedEnergyCost": 4,
+          "damage": "80",
+          "text": "Your opponent's Active Pokémon is now Asleep and Poisoned."
+        }
+      ]
+    }
+  ],
+  "page": 1,
+  "pageSize": 250,
+  "count": 117,
+  "totalCount": 117
+}
