@@ -13,16 +13,21 @@ abstract class _ControllerHomePageBase with Store {
   final _listPokemon = Modular.get<AbstractUserCaseHome>();
 
   @observable
+  String query = '';
+
+  @action
+  void querySearch(newValue) => query = newValue;
+
+  @observable
   Resource<List<HomeEntity>, ErrorApi> loading = Resource.loading();
 
   @action
   Future<Resource<void, ErrorApi>> listCards() async {
-    final resource = await _listPokemon.userCaseApi();
+    final resource = await _listPokemon.userCaseApi(query);
 
     if (resource.hasError) {
       return Resource.failed(error: ErrorApi.apiError);
     } else {
-      
       loading = resource;
       return Resource.success();
     }

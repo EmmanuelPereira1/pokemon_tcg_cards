@@ -5,22 +5,25 @@ import 'package:pokemon_tcg_cards/features/home/data/error_api.dart';
 import 'package:pokemon_tcg_cards/features/home/domain/entities/home_entity.dart';
 
 abstract class AbstractRepositoryApi {
-  Future<Resource<List<HomeEntity>, ErrorApi>> homeRepository();
+  Future<Resource<List<HomeEntity>, ErrorApi>> homeRepository(String? query);
 }
 
 class RepositoryApi implements AbstractRepositoryApi {
   final _dataSource = Modular.get<AbstractHomeDataSource>();
 
   @override
-  Future<Resource<List<HomeEntity>, ErrorApi>> homeRepository() async {
-    final resource = await _dataSource.dataSourceApi();
+  Future<Resource<List<HomeEntity>, ErrorApi>> homeRepository(String? query) async {
+    final resource = await _dataSource.dataSourceApi(query);
     if (resource.hasError) {
       return Resource.failed(error: resource.error);
     }
 
     final homeJson = resource.data;
     final pokemonListFromApi = homeJson!["data"] as List;
-    final pokemonList = pokemonListFromApi.map((e) => HomeEntity.fromJson(e)).toList();
+    var pokemonList = pokemonListFromApi.map((e) => HomeEntity.fromJson(e)).toList();
+     if(query != false){
+      pokemonList = pokemonList.where((element) => element.name!.toLowerCase().contains(query!.toLowerCase())).toList();
+    };
     return Resource.success(data: pokemonList);
   }
 }

@@ -5,15 +5,15 @@ import '../../../../core/generics/resource.dart';
 import '../../data/error_api.dart';
 
 abstract class AbstractUserCaseHome {
-  Future<Resource<List<HomeEntity>, ErrorApi>> userCaseApi();
+  Future<Resource<List<HomeEntity>, ErrorApi>> userCaseApi(String? query);
 }
 
 class UserCaseHome implements AbstractUserCaseHome {
   @override
-  Future<Resource<List<HomeEntity>, ErrorApi>> userCaseApi() async {
+  Future<Resource<List<HomeEntity>, ErrorApi>> userCaseApi(String? query) async {
     final _respository = Modular.get<AbstractRepositoryApi>();
 
-    final resource = await _respository.homeRepository();
+    final resource = await _respository.homeRepository(query);
     if (resource.hasError) {
       return Resource.failed(error: ErrorApi.apiError);
     }

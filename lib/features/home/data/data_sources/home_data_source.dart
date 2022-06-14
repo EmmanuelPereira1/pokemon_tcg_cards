@@ -6,14 +6,14 @@ import 'package:pokemon_tcg_cards/features/home/data/error_api.dart';
 import '../../../../core/adapters/remote_client/remote_client.dart';
 
 abstract class AbstractHomeDataSource {
-  Future<Resource<Map<String, dynamic>, ErrorApi>> dataSourceApi();
+  Future<Resource<Map<String, dynamic>, ErrorApi>> dataSourceApi(String? query);
 }
 
 class HomeDataSource implements AbstractHomeDataSource {
   final _remoteClient = Modular.get<RemoteClient>();
 
   @override
-  Future<Resource<Map<String, dynamic>, ErrorApi>> dataSourceApi() async {
+  Future<Resource<Map<String, dynamic>, ErrorApi>> dataSourceApi(String? query) async {
     final response = await _remoteClient.get(
       ApiConnect.baseUrl,
     );

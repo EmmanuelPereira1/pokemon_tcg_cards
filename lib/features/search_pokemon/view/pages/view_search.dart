@@ -39,7 +39,6 @@ import '../../../../core/widgets/custom_loading.dart';
         children: [
           FutureBuilder<List<SearchEntity>>(
             builder: (context, snapshot) {
-              var data = snapshot.data;
               if(!snapshot.hasData){
                 return Center(child: CustomLoading());
               }
