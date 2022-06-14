@@ -21,8 +21,9 @@ abstract class _PokeInfoControllerBase with Store {
   void setPageToLoadingStatus() => isPageAtLoadingStatus = true;
 
   @action
+  
   Future<Resource<void, ErrorApi>> pokeInfo(String id) async {
-    
+    Future.delayed(Duration(seconds: 4));
     final resource = await _pokeInfo.useCaseInfoPokeApi(id);
 
     if (resource.hasError) {
