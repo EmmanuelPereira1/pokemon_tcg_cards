@@ -5,12 +5,14 @@ import 'package:pokemon_tcg_cards/core/resources/FontsApp.dart';
 class CardPokemon extends StatelessWidget {
   final String pokemonName;
   final Function() onPressed;
-  final Image pokemonCard;
+  final String pokemonCard;
+  final List pokeTypes;
   const CardPokemon({
     Key? key,
     required this.pokemonName,
     required this.onPressed,
     required this.pokemonCard,
+    required this.pokeTypes,
   }) : super(key: key);
 
   @override
@@ -22,22 +24,32 @@ class CardPokemon extends StatelessWidget {
           elevation: 4,
           child: ListTile(
             onTap: onPressed,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                pokemonCard,
-                const SizedBox(
-                  width: 40,
+            leading: SizedBox(
+              child: Image.network(pokemonCard),
+            ),
+            title: Flexible(
+              child: Text(
+                pokemonName,
+                style: FontsApp.mainFontWithBold30.copyWith(
+                  color: ColorsFont.appFontDetails,
                 ),
-                Flexible(
-                  child: Text(
-                    pokemonName,
-                    style: FontsApp.mainFontWithBold30.copyWith(
-                      color: ColorsFont.appFontDetails,
+              ),
+            ),
+            subtitle: Padding(
+              padding: const EdgeInsets.all(4),
+              child: ListView.builder(
+                itemCount: pokeTypes.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return Container(
+                    child: Text(
+                      'Types ${pokeTypes[index]}',
+                      style: FontsApp.mainFontdetails20
+                          .copyWith(color: ColorsFont.appFontDarkness),
                     ),
-                  ),
-                )
-              ],
+                  );
+                },
+              ),
             ),
           ),
         ),

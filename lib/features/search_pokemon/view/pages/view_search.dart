@@ -10,68 +10,66 @@ import '../../../../core/resources/FontsApp.dart';
 import '../../../../core/widgets/custom_buttom.dart';
 import '../../../../core/widgets/custom_loading.dart';
 
- class SearchPokemon extends SearchDelegate {
-   final _controller = Modular.get<ControllerSearch>();
-   
-  @override 
+class SearchPokemon extends SearchDelegate {
+  final _controller = Modular.get<ControllerSearch>();
+
+  @override
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        onPressed: (){
-        query = '';
-      }, icon: Icon(Icons.close))
+          onPressed: () {
+            query = '';
+          },
+          icon: Icon(Icons.close))
     ];
   }
 
-  @override 
+  @override
   Widget buildLeading(BuildContext context) {
-  return IconButton(
-    onPressed: (){
-      Navigator.pop(context);
-    }, 
-  icon: Icon(Icons.arrow_back_ios)
-  );  
-}
-
-  @override 
-  Widget buildResults(BuildContext context) {
-    return  Stack(
-        children: [
-          FutureBuilder<List<SearchEntity>>(
-            builder: (context, snapshot) {
-              var data = snapshot.data;
-              if(!snapshot.hasData){
-                return Center(child: CustomLoading());
-              }
-              return ListView.builder(
-              itemBuilder: ((context, i) {
-                return Observer(builder: (_) {
-                  return _controller.loading.status == Status.loading
-                  ? const Center(child: CustomLoading(),)
-                  : CardPokemon(
-                    pokemonName: _controller.loading.data![i].name.toString(),
-                    onPressed: () {
-                      Modular.to.pushNamed('/pokeinfoview/',
-                          arguments: _controller.loading.data![i].id);
-                    },
-                    pokemonCard: Image(
-                      image: NetworkImage(
-                          _controller.loading.data![i].images!.small.toString(),
-                          scale: 4),
-                    ),
-                  );
-                });
-              }),
-            );
-            }
-            ) 
-          
-        ],
-      );
+    return IconButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        icon: Icon(Icons.arrow_back_ios));
   }
 
-  @override 
-  Widget buildSuggestions(BuildContext context){
+  @override
+  Widget buildResults(BuildContext context) {
+    return Stack(
+      children: [
+        FutureBuilder<List<SearchEntity>>(builder: (context, snapshot) {
+          var data = snapshot.data;
+          if (!snapshot.hasData) {
+            return Center(child: CustomLoading());
+          }
+          return ListView.builder(
+            itemBuilder: ((context, i) {
+              return Observer(builder: (_) {
+                return _controller.loading.status == Status.loading
+                    ? const Center(
+                        child: CustomLoading(),
+                      )
+                    : CardPokemon(
+                        pokemonName:
+                            _controller.loading.data![i].name.toString(),
+                        onPressed: () {
+                          Modular.to.pushNamed('/pokeinfoview/',
+                              arguments: _controller.loading.data![i].id);
+                        },
+                        pokemonCard: _controller.loading.data![i].images!.small
+                            .toString(),
+                        pokeTypes: [],
+                      );
+              });
+            }),
+          );
+        })
+      ],
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
     return Center(
       child: Text('Search Pokemon'),
     );
